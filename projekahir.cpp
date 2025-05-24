@@ -23,7 +23,7 @@ void tambahakhir();
 void tampilkanbuku();
 void sequential_search();
 void searching();
-void hapustengah();
+void hapusbuku();
 
 Buku *kepala = NULL, *ekor = NULL, *baru = NULL, *bantu = NULL;
 
@@ -79,7 +79,7 @@ int main()
             searching(juduldicari, pengarangdicari, genredicari);
             break;
         case 5:
-            hapustengah(juduldihapus);
+            hapusbuku(juduldihapus);
             getch();
             break;
         case 0:
@@ -351,7 +351,7 @@ void searching(char juduldicari[], char pengarangdicari[], char genredicari[])
     } while (pilihan != 0);
 }
 
-void hapustengah(char juduldihapus[])
+void hapusbuku(char juduldihapus[])
 {
     system("cls");
     FILE *databuku = fopen("databuku.dat", "wb");
