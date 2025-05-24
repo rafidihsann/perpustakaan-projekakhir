@@ -16,14 +16,15 @@ struct Buku
 //variabel global
 int jmlbuku = 0;
 int pilih;
+
 void bacadata();
 void bubblesort();
-void buatlink();
+void buatlink(char judul[], char pengarang[], char genre[], int tahun);
 void tambahakhir();
 void tampilkanbuku();
-void sequential_search();
-void searching();
-void hapusbuku();
+void sequential_search(char juduldicari[], char pengarangdicari[], char genredicari[]);
+void searching(char juduldicari[], char pengarangdicari[], char genredicari[]);
+void hapusbuku(char juduldihapus[]);
 
 Buku *kepala = NULL, *ekor = NULL, *baru = NULL, *bantu = NULL;
 
@@ -80,7 +81,6 @@ int main()
             break;
         case 5:
             hapusbuku(juduldihapus);
-            getch();
             break;
         case 0:
             cout << "Keluar dari program.\n";
@@ -276,7 +276,7 @@ void tampilkanbuku()
     }
 
     cout << "\nTotal buku: " << jmlbuku << endl;
-    cout << "\nTekan apa saja untuk kembali ke menu utama..";
+    cout << "\nTekan apa saja untuk melanjutkan..";
     getch();
 }
 
@@ -296,6 +296,7 @@ void sequential_search(char juduldicari[], char pengarangdicari[], char genredic
             cout << "Genre       : " << temp->genre << endl;
             cout << "Tahun Terbit: " << temp->tahunterbit << endl;
             cout << "---------------------------------" << endl;
+            cout << "\nTekan apa saja untuk melanjutkan..";
             getch();
             found = true;
         }
@@ -403,4 +404,6 @@ void hapusbuku(char juduldihapus[])
 
     fclose(databuku);
     jmlbuku--;
+    cout << "\nTekan apa saja untuk melanjutkan..";
+    getch();
 }
