@@ -16,9 +16,81 @@ struct Buku
 //variabel global
 int jmlbuku = 0;
 int pilih;
-
+void bacadata();
+void bubblesort();
+void buatlink();
+void tambahakhir();
+void tampilkanbuku();
+void sequential_search();
+void searching();
+void hapustengah();
 
 Buku *kepala = NULL, *ekor = NULL, *baru = NULL, *bantu = NULL;
+
+int main()
+{
+    char juduldicari[100], pengarangdicari[100], genredicari[100], juduldihapus[100];
+    bacadata();
+    do
+    {
+        system("cls");
+        cout << "\n====== MENU PERPUSTAKAAN ======";
+        cout << "\n1. Tambah Buku Pertamamu";
+        cout << "\n2. Tambah Buku";
+        cout << "\n3. Lihat Daftar Buku";
+        cout << "\n4. Cari Buku";
+        cout << "\n5. Hapus Buku";
+        cout << "\n0. Keluar";
+        cout << "\nPilih menu: ";
+        cin >> pilih;
+        cin.ignore();
+
+        switch (pilih)
+        {
+        case 1:
+            system("cls");
+            if (kepala != NULL)
+            {
+                cout << "Linked list sudah dibuat.\n";
+                getch();
+            }
+            else
+            {
+                char judul[100], pengarang[100], genre[100];
+                int tahun;
+                cout << "Judul: ";
+                cin.getline(judul, 100);
+                cout << "Pengarang: ";
+                cin.getline(pengarang, 100);
+                cout << "Genre: ";
+                cin.getline(genre, 100);
+                cout << "Tahun Terbit: ";
+                cin >> tahun;
+                buatlink(judul, pengarang, genre, tahun);
+            }
+            break;
+        case 2:
+            tambahakhir();
+            break;
+        case 3:
+            tampilkanbuku();
+            break;
+        case 4:
+            searching(juduldicari, pengarangdicari, genredicari);
+            break;
+        case 5:
+            hapustengah(juduldihapus);
+            getch();
+            break;
+        case 0:
+            cout << "Keluar dari program.\n";
+            break;
+        default:
+            cout << "Pilih sesuai angka menu!\n";
+            getch();
+        }
+    } while (pilih != 0);
+}
 
 //fungsi untuk membaca data dari file dan menyimpan ke dalam linked list
 void bacadata()
@@ -332,70 +404,3 @@ void hapustengah(char juduldihapus[])
     fclose(databuku);
     jmlbuku--;
 }
-
-
-int main()
-{
-    char juduldicari[100], pengarangdicari[100], genredicari[100], juduldihapus[100];
-    bacadata();
-    do
-    {
-        system("cls");
-        cout << "\n====== MENU PERPUSTAKAAN ======";
-        cout << "\n1. Tambah Buku Pertamamu";
-        cout << "\n2. Tambah Buku";
-        cout << "\n3. Lihat Daftar Buku";
-        cout << "\n4. Cari Buku";
-        cout << "\n5. Hapus Buku";
-        cout << "\n0. Keluar";
-        cout << "\nPilih menu: ";
-        cin >> pilih;
-        cin.ignore();
-
-        switch (pilih)
-        {
-        case 1:
-            system("cls");
-            if (kepala != NULL)
-            {
-                cout << "Linked list sudah dibuat.\n";
-                getch();
-            }
-            else
-            {
-                char judul[100], pengarang[100], genre[100];
-                int tahun;
-                cout << "Judul: ";
-                cin.getline(judul, 100);
-                cout << "Pengarang: ";
-                cin.getline(pengarang, 100);
-                cout << "Genre: ";
-                cin.getline(genre, 100);
-                cout << "Tahun Terbit: ";
-                cin >> tahun;
-                buatlink(judul, pengarang, genre, tahun);
-            }
-            break;
-        case 2:
-            tambahakhir();
-            break;
-        case 3:
-            tampilkanbuku();
-            break;
-        case 4:
-            searching(juduldicari, pengarangdicari, genredicari);
-            break;
-        case 5:
-            hapustengah(juduldihapus);
-            getch();
-            break;
-        case 0:
-            cout << "Keluar dari program.\n";
-            break;
-        default:
-            cout << "Pilih sesuai angka menu!\n";
-            getch();
-        }
-    } while (pilih != 0);
-}
-
